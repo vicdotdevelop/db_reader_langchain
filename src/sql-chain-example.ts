@@ -14,14 +14,16 @@ import {SqlDatabase} from 'langchain/sql_db';
 import {SqlDatabaseChain} from 'langchain/chains';
 import * as dotenv from 'dotenv';
 import {env} from 'process';
+import path from 'path';
 
-dotenv.config();
+// Parsing the env file.
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 export const run = async (prompt:string) => {
   try {
     const datasource = new DataSource({
       type: 'sqlite',
-      database: 'northwind.db',
+      database: '../northwind.db',
     });
 
     // Add includesTables: ['Products'], to only include specific tables
@@ -31,7 +33,7 @@ export const run = async (prompt:string) => {
     });
 
     const chain = new SqlDatabaseChain({
-      llm: new OpenAI({temperature: 0, openAIApiKey: env.OPENAI_API_KEY}),
+      llm: new OpenAI({temperature: 0, openAIApiKey: env.OPENAI_API_KEY as string}),
       database: db,
       verbose: true, // verbose is set to true to log the generated SQL query to the console
     });
