@@ -24,9 +24,10 @@ export const run = async () => {
       database: 'northwind.db',
     });
 
+    // Add includesTables: ['Products'], to only include specific tables
     const db = await SqlDatabase.fromDataSourceParams({
       appDataSource: datasource,
-      includesTables: ['Products'],
+      includesTables: ['Products', 'Orders', 'Order Details'],
     });
 
     const chain = new SqlDatabaseChain({
@@ -36,7 +37,7 @@ export const run = async () => {
     });
 
     const res = await chain.run(
-      'How many products are existing in the database table?'
+      'Give me the top 5 products including their sales numbers'
     );
     console.log(res);
   } catch (error) {
