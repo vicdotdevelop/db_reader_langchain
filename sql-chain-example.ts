@@ -37,7 +37,7 @@ export const run = async () => {
     });
 
     const res = await chain.run(
-      'Give me the top 5 products including their sales numbers'
+      'Please give me the 5 best selling products in the database. Include thethe total sales of each product. Format it like product name, total sales.'
     );
     console.log(res);
   } catch (error) {
