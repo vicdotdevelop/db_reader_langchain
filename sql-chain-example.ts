@@ -36,10 +36,15 @@ export const run = async () => {
       verbose: true, // verbose is set to true to log the generated SQL query to the console
     });
 
-    const res = await chain.run(
-      'Please give me the 5 best selling products in the database. Include thethe total sales of each product. Format it like product name, total sales.'
-    );
-    console.log(res);
+    console.log(await chain.run(
+      'Please give me the 5 best selling products in the database. Include the total sales of each product. Format it like product name, total sales.'
+    ));
+    
+    console.log(await chain.run(
+      'How is the technical relation built up between the entities in the includesTables parameter ? Please list the relations between the tables. Please described detailed as possible in a technical way as text.'
+    ));
+    
+
   } catch (error) {
     console.log(error);
   }
