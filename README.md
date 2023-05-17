@@ -23,3 +23,7 @@ includesTables: ['Products', 'Orders', 'Order Details'],
 ```
 I am working on a solution to make it easier.
 
+# Ideas to enhance this project
+
+- Add reading git repos to search for particular solutions or libraries.
+- Add OpenAPI Chain to query against OpenAPI definitions.
